@@ -12,7 +12,7 @@
  */
 ?>
 <div
-    class="pw-vc-wrapper"
+    class="pw-vc-wrapper pw-vc--bui"
     data-field-name="<?php echo esc_attr($data["fieldName"]); ?>"
     data-nonce="<?php echo esc_attr($data["nonce"]); ?>"
     data-ajax-url="<?php echo esc_url($data["ajaxUrl"]); ?>"
@@ -24,7 +24,7 @@
         <!-- JS renders condition rows here -->
     </div>
 
-    <button type="button" class="button pw-vc-add-condition">
+    <button type="button" class="pw-vc-add-condition pw-vc-btn pw-vc-btn--secondary">
         + <?php esc_html_e("Add Condition", "pw-vc"); ?>
     </button>
 

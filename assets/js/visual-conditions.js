@@ -72,7 +72,7 @@
 
 			return `
                 <div class="pw-vc-row">
-                    <select class="pw-vc-operator">
+                    <select class="pw-vc-operator pw-bui-select">
                         <option value="include" ${operator === "include" ? "selected" : ""}>
                             Include
                         </option>
@@ -81,7 +81,7 @@
                         </option>
                     </select>
 
-                    <select class="pw-vc-source">
+                    <select class="pw-vc-source pw-bui-select">
                         <option value="">— Select —</option>
                     </select>
 
@@ -125,6 +125,7 @@
 
 			$items.select2({
 				width: "100%",
+				dropdownCssClass: "pw-vc-select2-dd",
 				placeholder: "Search...",
 				allowClear: true,
 				minimumInputLength: 0,
