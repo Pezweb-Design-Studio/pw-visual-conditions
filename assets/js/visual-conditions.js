@@ -124,7 +124,7 @@
 			$items.show().empty();
 
 			$items.select2({
-				width: "260px",
+				width: "100%",
 				placeholder: "Search...",
 				allowClear: true,
 				minimumInputLength: 0,

@@ -1,26 +1,35 @@
 /* assets/css/visual-conditions.css */
 
+/* min-width:0 en cadena evita desborde horizontal típico de flex + hijos con min-content ancho */
 .pw-vc-wrapper {
 	margin: 1rem 0;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	box-sizing: border-box;
 }
 
 .pw-vc-rows {
 	display: flex;
 	flex-direction: column;
+	min-width: 0;
+	width: 100%;
 }
 
 /*
- * Una fila = una condición: todo en horizontal. Evitar wrap salvo pantallas muy estrechas
- * (Select2 suele poner width:100% y con flex-wrap cada control acaba en su línea).
+ * Una fila = una condición: todo en horizontal dentro del ancho disponible.
  */
 .pw-vc-row {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	align-items: center;
-	gap: 10px;
+	gap: 8px;
 	padding: 12px 0;
 	margin: 0;
+	min-width: 0;
+	width: 100%;
+	max-width: 100%;
 	border-bottom: 1px solid rgba(128, 128, 128, 0.28);
 	box-sizing: border-box;
 }
@@ -30,25 +39,30 @@
 	padding-bottom: 4px;
 }
 
-.pw-vc-row .pw-vc-operator,
+.pw-vc-row .pw-vc-operator {
+	flex: 0 1 10rem;
+	min-width: 0;
+	max-width: 32%;
+}
+
 .pw-vc-row .pw-vc-source {
-	flex: 0 0 auto;
-	width: auto;
-	min-width: 7.5rem;
-	max-width: 14rem;
+	flex: 0 1 12rem;
+	min-width: 0;
+	max-width: 38%;
 }
 
 .pw-vc-row select {
-	max-width: none;
+	min-width: 0;
+	max-width: 100%;
 	vertical-align: middle;
 }
 
-/* Select2: ancho acotado para que no fuerce 100% y rompa el flex */
+/* Tercer control: ocupa el hueco restante; Select2 viene con width:100% vía JS */
 .pw-vc-row .select2-container {
-	flex: 1 1 12rem;
-	min-width: 10rem !important;
-	max-width: 22rem !important;
-	width: 16rem !important;
+	flex: 1 1 0;
+	min-width: 0 !important;
+	max-width: 100% !important;
+	width: 100% !important;
 }
 
 .pw-vc-remove {
