@@ -4,27 +4,62 @@
 	margin: 1rem 0;
 }
 
-.pw-vc-row {
+.pw-vc-rows {
 	display: flex;
-	align-items: center;
-	gap: 8px;
-	margin-bottom: 8px;
-	flex-wrap: wrap;
+	flex-direction: column;
 }
 
-.pw-vc-row select,
+/*
+ * Una fila = una condición: todo en horizontal. Evitar wrap salvo pantallas muy estrechas
+ * (Select2 suele poner width:100% y con flex-wrap cada control acaba en su línea).
+ */
+.pw-vc-row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 0;
+	margin: 0;
+	border-bottom: 1px solid rgba(128, 128, 128, 0.28);
+	box-sizing: border-box;
+}
+
+.pw-vc-rows > .pw-vc-row:last-child {
+	border-bottom: none;
+	padding-bottom: 4px;
+}
+
+.pw-vc-row .pw-vc-operator,
+.pw-vc-row .pw-vc-source {
+	flex: 0 0 auto;
+	width: auto;
+	min-width: 7.5rem;
+	max-width: 14rem;
+}
+
+.pw-vc-row select {
+	max-width: none;
+	vertical-align: middle;
+}
+
+/* Select2: ancho acotado para que no fuerce 100% y rompa el flex */
 .pw-vc-row .select2-container {
-	min-width: 160px;
-	max-width: 240px;
+	flex: 1 1 12rem;
+	min-width: 10rem !important;
+	max-width: 22rem !important;
+	width: 16rem !important;
 }
 
 .pw-vc-remove {
+	flex: 0 0 auto;
 	background: none;
 	border: none;
 	color: #cc1818;
 	cursor: pointer;
 	font-size: 16px;
 	padding: 0 4px;
+	align-self: center;
 }
 
 .pw-vc-remove:hover {
@@ -32,5 +67,24 @@
 }
 
 .pw-vc-add-condition {
-	margin-top: 4px;
+	margin-top: 8px;
+}
+
+@media screen and (max-width: 782px) {
+	.pw-vc-row {
+		flex-wrap: wrap;
+		align-items: flex-start;
+	}
+
+	.pw-vc-row .pw-vc-operator,
+	.pw-vc-row .pw-vc-source {
+		flex: 1 1 calc(50% - 6px);
+		max-width: none;
+	}
+
+	.pw-vc-row .select2-container {
+		flex: 1 1 100%;
+		max-width: 100% !important;
+		width: 100% !important;
+	}
 }
